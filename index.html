@@ -3,41 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Točak Sudbine</title>
-  <meta name="theme-color" content="#07060d">
+  <title>Točak 1E</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="bg"></canvas>
-  <div class="rays"></div>
-
   <div class="corner">
     <button id="muteBtn" class="icon-btn" title="Zvuk">🔊</button>
     <button id="fsBtn" class="icon-btn" title="Ceo ekran">⛶</button>
   </div>
 
   <main>
-    <header>
-      <h1><span>TOČAK</span> <span class="hot">SUDBINE</span></h1>
-      <p class="sub">ko je sledeći?</p>
-    </header>
+    <h1>Ko je na redu? <span class="tag">1E</span></h1>
 
     <div class="stage" id="stage">
       <canvas id="wheel"></canvas>
     </div>
 
-    <button id="spinBtn" class="spin-btn"><span>ZAVRTI</span></button>
+    <button id="spinBtn" class="spin-btn">Zavrti</button>
   </main>
 
+  <footer>napravio Kosta · 1E</footer>
+
   <div id="winner" class="winner" hidden>
-    <canvas id="confetti"></canvas>
     <div class="winner-card">
-      <div class="winner-label">NA REDU JE</div>
+      <div class="winner-label">Na redu je</div>
       <div id="winnerName" class="winner-name"></div>
-      <button id="againBtn" class="spin-btn small"><span>ZAVRTI PONOVO</span></button>
+      <button id="againBtn" class="spin-btn">Zavrti opet</button>
     </div>
   </div>
 

@@ -88,7 +88,25 @@ function createBus(onMessage, onConnection) {
     }
   }
 
+  // Neki browseri (npr. na satu) nemaju EventSource, tada pitamo svake 2s.
+  function poll() {
+    fetch(`${APP.RELAY}/${APP.CHANNEL}/json?poll=1&since=${lastId || '10s'}`)
+      .then((r) => r.text())
+      .then((text) => {
+        if (onConnection) onConnection(true);
+        for (const line of text.split('\n')) {
+          if (!line.trim()) continue;
+          try { handle(unwrap(JSON.parse(line))); } catch (e) {}
+        }
+      }, () => onConnection && onConnection(false))
+      .then(() => { retry = setTimeout(poll, 2000); });
+  }
+
   function connect() {
+    if (!window.EventSource) {
+      poll();
+      return;
+    }
     if (es) es.close();
     clearTimeout(retry);
     es = new EventSource(`${APP.RELAY}/${APP.CHANNEL}/sse` + (lastId ? `?since=${lastId}` : ''));
